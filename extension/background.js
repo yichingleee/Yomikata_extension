@@ -2,7 +2,8 @@ const API_ENDPOINTS = {
   jisho: "https://jisho.org/api/v1/search/words?keyword=",
   tatoeba: "https://tatoeba.org/en/api_v0/search?from=jpn&query=",
   libreTranslate: "https://libretranslate.de/translate",
-  libreTranslateFallback: "https://libretranslate.com/translate"
+  libreTranslateFallback: "https://libretranslate.com/translate",
+  myMemory: "https://api.mymemory.translated.net/get"
 };
 
 const STORAGE_KEYS = {
@@ -209,8 +210,20 @@ async function translateDefinitions(defs) {
   }
 
   const joined = defs.join(" ||| ");
+  const libreTranslated = await translateViaLibreTranslate(joined);
+  if (libreTranslated) {
+    const parts = splitTranslatedDefinitions(libreTranslated, defs.length);
+    if (parts.length) {
+      return parts;
+    }
+  }
+
+  return await translateViaMyMemory(defs);
+}
+
+async function translateViaLibreTranslate(text) {
   const payload = {
-    q: joined,
+    q: text,
     source: "en",
     target: "zh",
     format: "text"
@@ -223,19 +236,63 @@ async function translateDefinitions(defs) {
 
   if (!result.ok) {
     console.warn("LibreTranslate failed", result.status, result.preview);
-    return [];
+    return "";
   }
 
-  const translated = (result.data?.translatedText || "").trim();
+  return (result.data?.translatedText || "").trim();
+}
+
+function splitTranslatedDefinitions(translated, expectedCount) {
   if (!translated) {
     return [];
   }
 
-  const parts = translated.split("|||").map((part) => part.trim()).filter(Boolean);
-  if (parts.length === defs.length) {
+  const parts = translated
+    .split("|||")
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  if (expectedCount && parts.length === expectedCount) {
     return parts;
   }
-  return [translated];
+
+  if (parts.length > 1) {
+    return parts;
+  }
+
+  return translated ? [translated] : [];
+}
+
+async function translateViaMyMemory(defs) {
+  const translated = [];
+
+  for (const def of defs) {
+    const query = def.trim();
+    if (!query) {
+      continue;
+    }
+
+    try {
+      const url = `${API_ENDPOINTS.myMemory}?q=${encodeURIComponent(
+        query
+      )}&langpair=en|zh-CN`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        console.warn("MyMemory response not ok", response.status);
+        continue;
+      }
+
+      const data = await response.json();
+      const text = (data?.responseData?.translatedText || "").trim();
+      if (text) {
+        translated.push(text);
+      }
+    } catch (error) {
+      console.warn("MyMemory lookup failed", error);
+    }
+  }
+
+  return translated;
 }
 
 async function postTranslate(url, payload) {

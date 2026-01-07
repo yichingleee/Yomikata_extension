@@ -1,13 +1,13 @@
 # Yomikata Extension Specification
 
 ## Goal
-Build a Chrome/Firefox extension that lets a user select a Japanese kanji word, press `Alt+Y`, and see a dark-themed popup under the selection showing hiragana, English + Chinese definitions, and two simple example sentences with full-sentence furigana. The popup closes on click-away. The user can save the word to a vocabulary list and review it with an optional mixed-mode quiz in the popup.
+Build a Chrome/Firefox extension that lets a user select a Japanese kanji word, press `Ctrl+Shift+Y`, and see a dark-themed popup under the selection showing hiragana, English + Chinese definitions, and two simple example sentences with full-sentence furigana. The popup closes on click-away. The user can save the word to a vocabulary list and review it with an optional mixed-mode quiz in the popup.
 
 ## Platforms
 - Chrome and Firefox (Manifest V3 where possible).
 
 ## Trigger and Behavior
-- Trigger: keyboard shortcut `Alt+Y`.
+- Trigger: keyboard shortcut `Ctrl+Shift+Y`.
 - On trigger, read the current selection in the active tab.
 - Popup is anchored just below the highlighted word.
 - Popup dismisses on click-away or `Esc`.

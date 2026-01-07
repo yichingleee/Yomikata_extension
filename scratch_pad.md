@@ -18,3 +18,8 @@
 - Added partial-failure handling and console warnings for API fetch errors.
 - Added LibreTranslate fallback endpoint and safer JSON parsing for HTML responses.
 - Forced popup text colors to avoid host page CSS overriding definitions.
+- Added MyMemory fallback translation and host permission for API key-free ZH definitions.
+- Updated furigana loader to read UMD globals via globalThis after dynamic import.
+- Added UMD fallback loaders for Kuroshiro/Kuromoji and extra global resolution checks.
+- Patched bundled Kuroshiro runtime to avoid CSP-violating Function eval.
+- Unwrapped default exports from UMD globals so Kuroshiro/Kuromoji constructors resolve correctly.

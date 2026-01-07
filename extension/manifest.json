@@ -8,7 +8,8 @@
     "https://jisho.org/*",
     "https://tatoeba.org/*",
     "https://libretranslate.de/*",
-    "https://libretranslate.com/*"
+    "https://libretranslate.com/*",
+    "https://api.mymemory.translated.net/*"
   ],
   "background": {
     "service_worker": "background.js"

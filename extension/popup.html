@@ -1,0 +1,50 @@
+<div class="yomi-card" role="dialog" aria-live="polite">
+  <div class="yomi-header">
+    <div class="yomi-title">
+      <div id="yomi-word" class="yomi-word"></div>
+      <div id="yomi-reading" class="yomi-reading"></div>
+    </div>
+    <button id="yomi-close" class="yomi-icon" type="button">x</button>
+  </div>
+  <div id="yomi-status" class="yomi-status yomi-hidden"></div>
+  <div class="yomi-section">
+    <div class="yomi-section-title">Definitions (EN)</div>
+    <ul id="yomi-def-en" class="yomi-list"></ul>
+    <div class="yomi-section-title">Definitions (ZH)</div>
+    <ul id="yomi-def-zh" class="yomi-list"></ul>
+  </div>
+  <div class="yomi-section">
+    <div class="yomi-section-title">Examples</div>
+    <div id="yomi-furigana-note" class="yomi-note yomi-hidden">
+      Furigana engine not available yet.
+    </div>
+    <div id="yomi-sentences" class="yomi-sentences"></div>
+  </div>
+  <div class="yomi-actions">
+    <button id="yomi-audio" class="yomi-button" type="button">Play</button>
+    <button id="yomi-save" class="yomi-button" type="button">Save</button>
+    <button id="yomi-toggle-vocab" class="yomi-button" type="button">Vocab</button>
+    <button id="yomi-toggle-quiz" class="yomi-button" type="button">Quiz</button>
+  </div>
+  <div id="yomi-vocab" class="yomi-section yomi-hidden">
+    <div class="yomi-section-title">Vocabulary</div>
+    <div class="yomi-row">
+      <label class="yomi-checkbox">
+        <input type="checkbox" id="yomi-quiz-mixed" />
+        Mixed quiz (reading + meaning)
+      </label>
+      <button id="yomi-quiz-start" class="yomi-button" type="button">Start Quiz</button>
+    </div>
+    <div id="yomi-vocab-list" class="yomi-vocab-list"></div>
+  </div>
+  <div id="yomi-quiz" class="yomi-section yomi-hidden">
+    <div class="yomi-section-title">Quiz</div>
+    <div id="yomi-quiz-question" class="yomi-quiz-question"></div>
+    <input id="yomi-quiz-answer" class="yomi-input" type="text" />
+    <div class="yomi-row">
+      <button id="yomi-quiz-check" class="yomi-button" type="button">Check</button>
+      <button id="yomi-quiz-next" class="yomi-button" type="button">Next</button>
+      <div id="yomi-quiz-status" class="yomi-quiz-status"></div>
+    </div>
+  </div>
+</div>

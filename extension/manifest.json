@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Yomikata Helper",
+  "version": "0.1.0",
+  "description": "Lookup Japanese selections with readings, definitions, and sentences.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": [
+    "https://jisho.org/*",
+    "https://tatoeba.org/*",
+    "https://libretranslate.de/*",
+    "https://libretranslate.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "lookup-selection": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      },
+      "description": "Lookup selected Japanese word"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "popup.html",
+        "popup.css",
+        "popup.js",
+        "lib/furigana.js",
+        "lib/kuroshiro/*",
+        "lib/kuromoji/dict/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_title": "Yomikata Helper"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "yomikata-helper@example.com"
+    }
+  }
+}

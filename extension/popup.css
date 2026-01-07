@@ -1,0 +1,205 @@
+:root {
+  --yomi-bg: #0d0f12;
+  --yomi-card: #161b22;
+  --yomi-border: #2b3440;
+  --yomi-text: #e7edf5;
+  --yomi-muted: #a5b0bd;
+  --yomi-accent: #4bc2ff;
+  --yomi-accent-2: #ffb347;
+  --yomi-shadow: rgba(0, 0, 0, 0.35);
+}
+
+#yomi-popup-root {
+  position: absolute;
+  z-index: 2147483647;
+  max-width: 360px;
+  min-width: 260px;
+  font-family: "IBM Plex Sans", "Fira Sans", "Segoe UI", sans-serif;
+  color: var(--yomi-text);
+}
+
+#yomi-popup-root .yomi-card,
+#yomi-popup-root .yomi-list,
+#yomi-popup-root .yomi-list li,
+#yomi-popup-root .yomi-sentence,
+#yomi-popup-root .yomi-note,
+#yomi-popup-root .yomi-quiz-question,
+#yomi-popup-root .yomi-quiz-status,
+#yomi-popup-root .yomi-vocab-item,
+#yomi-popup-root .yomi-button,
+#yomi-popup-root .yomi-input {
+  color: var(--yomi-text);
+}
+
+#yomi-popup-root.yomi-hidden {
+  display: none;
+}
+
+.yomi-card {
+  background: radial-gradient(circle at top, #1b222b, #141820 70%);
+  border: 1px solid var(--yomi-border);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px var(--yomi-shadow);
+  padding: 12px;
+}
+
+.yomi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.yomi-word {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.yomi-reading {
+  font-size: 13px;
+  color: var(--yomi-muted);
+}
+
+.yomi-icon {
+  background: transparent;
+  border: 1px solid var(--yomi-border);
+  color: var(--yomi-muted);
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.yomi-status {
+  font-size: 12px;
+  color: var(--yomi-accent-2);
+  margin-bottom: 8px;
+}
+
+.yomi-section {
+  margin: 10px 0;
+}
+
+.yomi-section-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--yomi-muted);
+  margin-bottom: 6px;
+}
+
+.yomi-list {
+  margin: 0 0 8px;
+  padding-left: 16px;
+  font-size: 13px;
+}
+
+.yomi-sentences {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.yomi-sentence {
+  padding: 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.yomi-note {
+  font-size: 12px;
+  color: var(--yomi-muted);
+  margin-bottom: 6px;
+}
+
+.yomi-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.yomi-button {
+  background: linear-gradient(120deg, #1b232d, #202938);
+  color: var(--yomi-text);
+  border: 1px solid var(--yomi-border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.yomi-button:hover {
+  border-color: var(--yomi-accent);
+}
+
+.yomi-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.yomi-checkbox {
+  font-size: 12px;
+  color: var(--yomi-muted);
+}
+
+.yomi-vocab-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.yomi-vocab-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 13px;
+}
+
+.yomi-vocab-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.yomi-input {
+  width: 100%;
+  margin-top: 6px;
+  background: #0d1117;
+  border: 1px solid var(--yomi-border);
+  border-radius: 6px;
+  color: var(--yomi-text);
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+.yomi-input::placeholder {
+  color: var(--yomi-muted);
+}
+
+.yomi-quiz-question {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.yomi-quiz-status {
+  font-size: 12px;
+  color: var(--yomi-muted);
+}
+
+.yomi-hidden {
+  display: none;
+}
+
+ruby rt {
+  font-size: 10px;
+  color: var(--yomi-accent);
+}

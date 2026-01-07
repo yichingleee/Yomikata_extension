@@ -23,3 +23,4 @@
 - Added UMD fallback loaders for Kuroshiro/Kuromoji and extra global resolution checks.
 - Patched bundled Kuroshiro runtime to avoid CSP-violating Function eval.
 - Unwrapped default exports from UMD globals so Kuroshiro/Kuromoji constructors resolve correctly.
+- Added a root README with a short extension reload troubleshooting note.
